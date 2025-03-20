@@ -1,6 +1,7 @@
 package com.generation.peopleflow.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.peopleflow.model.Usuario;
+import com.generation.peopleflow.model.UsuarioLogin;
 import com.generation.peopleflow.repository.UsuarioRepository;
 import com.generation.peopleflow.service.UsuarioService;
 
@@ -52,14 +54,14 @@ public class UsuarioController {
 	            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-//	@PostMapping("/logar")
-//	public ResponseEntity<UsuarioLogin> autenticarUsuario(@RequestBody Optional<UsuarioLogin> usuarioLogin){
-//		
-//		return usuarioService.autenticarUsuario(usuarioLogin)
-//				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
-//				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
-//	}
-//    
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> autenticarUsuario(@RequestBody Optional<UsuarioLogin> usuarioLogin){
+		
+		return usuarioService.autenticarUsuario(usuarioLogin)
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+    
 
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> postUsuario(@RequestBody @Valid Usuario usuario) {
