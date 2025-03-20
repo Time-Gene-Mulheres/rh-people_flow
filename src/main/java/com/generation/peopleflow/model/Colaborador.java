@@ -33,7 +33,7 @@ public class Colaborador {
 	
 	@NotNull (message = "O atributo data de nascimento não pode ser nulo!")
 	@Past (message = "O atributo data de nascimento deve ser anterior a data atual!")
-	private LocalDate data_de_nascimento;
+	private LocalDate dataDeNascimento;
 
     @NotBlank(message = "O atributo cargo é obrigatório!")
     @Size(min = 5, max = 50, message = "O atributo cargo deve ter no mínimo 05 e no máximo 10 caracteres!")
@@ -72,11 +72,11 @@ public class Colaborador {
 	}
 
 	public LocalDate getData_de_nascimento() {
-		return data_de_nascimento;
+		return dataDeNascimento;
 	}
 
 	public void setData_de_nascimento(LocalDate data_de_nascimento) {
-		this.data_de_nascimento = data_de_nascimento;
+		this.dataDeNascimento = data_de_nascimento;
 	}
 
 	public String getCargo() {
