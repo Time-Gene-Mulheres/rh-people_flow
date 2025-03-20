@@ -71,12 +71,12 @@ public class Colaborador {
 		this.salario = salario;
 	}
 
-	public LocalDate getData_de_nascimento() {
+	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
-	public void setData_de_nascimento(LocalDate data_de_nascimento) {
-		this.dataDeNascimento = data_de_nascimento;
+	public void setDataDeNascimento(LocalDate dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
 	}
 
 	public String getCargo() {
