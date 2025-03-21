@@ -40,7 +40,7 @@ public class Usuario {
 	private String senha;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("colaborador")
+	@JsonIgnoreProperties("usuario")
 	private List<Colaborador> colaborador;
 
 	public Long getId() {
