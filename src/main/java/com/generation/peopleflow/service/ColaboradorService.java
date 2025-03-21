@@ -26,8 +26,10 @@ public class ColaboradorService {
 
         // Obtém o colaborador e aplica o reajuste
         Colaborador colaborador = colaboradorOptional.get();
+        
         double taxa = 0.10; // 10% de aumento
         double novoSalario = colaborador.getSalario() * (1 + taxa);
+        novoSalario = Math.round(novoSalario * 100.0) / 100.0;
         colaborador.setSalario(novoSalario);
 
         // Salva o novo salário no banco
