@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.generation.peopleflow.model.Colaborador;
 import com.generation.peopleflow.repository.ColaboradorRepository;
 import com.generation.peopleflow.repository.SetorRepository;
+import com.generation.peopleflow.service.ColaboradorService;
 
 import jakarta.validation.Valid;
 
@@ -35,6 +36,9 @@ public class ColaboradorController {
 	
 	@Autowired
 	private SetorRepository setorRepository;
+	
+	@Autowired
+	private ColaboradorService colaboradorService;
 	
 	@GetMapping
 	public ResponseEntity<List<Colaborador>> getAll(){
@@ -51,6 +55,11 @@ public class ColaboradorController {
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Colaborador>> getByTitulo(@PathVariable String nome){
 		return ResponseEntity.ok(colaboradorRepository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	@GetMapping("/reajuste/{id}")
+	public ResponseEntity<Optional<Colaborador>> getReajuste(@PathVariable Long id) {
+		return ResponseEntity.ok(colaboradorService.reajusteSalarial(id));
 	}
 	
 	@PostMapping
