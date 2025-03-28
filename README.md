@@ -151,11 +151,11 @@ Respostas:
    ```bash
    http://localhost:8080/swagger-ui.html
    ```
-
+---
 ## 🌐 Deploy
 
 A aplicação está hospedada em produção na plataforma [Render](https://render.com), com banco de dados conectado e ambiente pronto para escalabilidade.
-
+---
 
 ## 📚 Funcionalidades
 
@@ -163,6 +163,7 @@ A aplicação está hospedada em produção na plataforma [Render](https://rende
 - Cadastro e gestão de Setores
 - Cadastro e gestão de Usuários
 - Controle Salárial
+---
 
 ## ✨ Futuras Melhorias 
 
@@ -171,7 +172,7 @@ A aplicação está hospedada em produção na plataforma [Render](https://rende
 - Gestão de benefícios
 - Onboarding e processos seletivos
 - Geração de relatórios e dashboards
-
+---
 
 ## 👩‍💻 Desenvolvedoras
 
@@ -204,4 +205,4 @@ A aplicação está hospedada em produção na plataforma [Render](https://rende
   <img src="https://github.com/keifsant.png" width="120" alt="Keilla Santos">
 </a>
 <br><br>
-
+---
