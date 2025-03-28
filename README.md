@@ -79,6 +79,7 @@ Respostas:
 201 CREATED: Usuário criado  
 400 BAD REQUEST: Dados inválidos ou usuário existente
 
+
 🔐 Autenticar Usuário
 POST /usuarios/logar
 
@@ -95,6 +96,7 @@ Respostas:
 
 200 OK: Usuário autenticado
 401 UNAUTHORIZED: Credenciais inválidas
+
 
 ♻️ Atualizar Usuário
 PUT /usuarios/atualizar
@@ -114,6 +116,7 @@ Respostas:
 200 OK: Usuário atualizado
 404 NOT FOUND: Usuário não encontrado
 
+
 📄 Listar Todos os Usuários
 GET /usuarios/all
 
@@ -129,6 +132,7 @@ Request body:
   }
 ```
 
+
 🔍 Buscar Usuário por ID
 GET /usuarios/{id}
 
@@ -137,6 +141,7 @@ Respostas:
 200 OK
 404 NOT FOUND
 
+
 🔍 Buscar por nome de usuário
 GET /usuarios/usuario/{usuario}
 
@@ -144,6 +149,7 @@ Respostas:
 
 200 OK
 404 NOT FOUND
+
 
 5. Seguir o mesmo conceito para testar SETOR e COLABORADOR
    
@@ -155,6 +161,7 @@ Respostas:
 ## 🌐 Deploy
 
 A aplicação está hospedada em produção na plataforma [Render](https://render.com), com banco de dados conectado e ambiente pronto para escalabilidade.
+
 ---
 
 ## 📚 Funcionalidades
@@ -163,6 +170,7 @@ A aplicação está hospedada em produção na plataforma [Render](https://rende
 - Cadastro e gestão de Setores
 - Cadastro e gestão de Usuários
 - Controle Salárial
+    
 ---
 
 ## ✨ Futuras Melhorias 
