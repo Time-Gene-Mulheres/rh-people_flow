@@ -211,5 +211,5 @@ A aplicação está hospedada em produção na plataforma [Render](https://rende
 <a href="https://github.com/keifsant">
   <img src="https://github.com/keifsant.png" width="120" alt="Keilla Santos">
 </a>
-<br><br>
+<br>
 
