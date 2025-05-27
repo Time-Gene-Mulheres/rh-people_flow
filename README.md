@@ -160,7 +160,7 @@ Respostas:
 ---
 ## 🌐 Deploy
 
-A aplicação está hospedada em produção na plataforma [Render](https://render.com), com banco de dados conectado e ambiente pronto para escalabilidade.
+A aplicação está hospedada em produção na plataforma [Netlify](https://people-flow.netlify.app/), com banco de dados conectado e ambiente pronto para escalabilidade.
 
 ---
 
