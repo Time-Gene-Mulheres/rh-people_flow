@@ -3,6 +3,8 @@ package com.generation.peopleflow.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.generation.peopleflow.model.ReajusteDTO;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,11 +59,6 @@ public class ColaboradorController {
 		return ResponseEntity.ok(colaboradorRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
-	@GetMapping("/reajuste/{id}")
-	public ResponseEntity<Optional<Colaborador>> getReajuste(@PathVariable Long id) {
-		return ResponseEntity.ok(colaboradorService.reajusteSalarial(id));
-	}
-	
 	@PostMapping
 	public ResponseEntity<Colaborador> post(@Valid @RequestBody Colaborador colaborador){
 		if(setorRepository.existsById(colaborador.getSetor().getId()))
@@ -80,6 +77,15 @@ public class ColaboradorController {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O Setor não existe!", null);
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
+
+	@PutMapping("/reajuste/{id}")
+	public ResponseEntity<Colaborador> reajustarSalario(
+			@PathVariable Long id,
+			@RequestBody ReajusteDTO reajusteDTO
+			) {
+		Colaborador colaboradorAtualizado = colaboradorService.reajustar(id, reajusteDTO.getPorcentagem());
+		return ResponseEntity.ok(colaboradorAtualizado);
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
