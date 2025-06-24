@@ -1,15 +1,11 @@
 package com.generation.peopleflow.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -46,7 +42,18 @@ public class Colaborador {
     @ManyToOne
     @JsonIgnoreProperties("colaborador")
     private Usuario usuario;
-    
+
+	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Ferias> ferias;
+
+	public List<Ferias> getFerias() {
+		return ferias;
+	}
+
+	public void setFerias(List<Ferias> ferias) {
+		this.ferias = ferias;
+	}
+
 	public Long getId() {
 		return id;
 	}
