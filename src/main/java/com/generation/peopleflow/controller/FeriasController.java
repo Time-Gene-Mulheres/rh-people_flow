@@ -1,19 +1,15 @@
 package com.generation.peopleflow.controller;
 
-import com.generation.peopleflow.model.Colaborador;
 import com.generation.peopleflow.model.Ferias;
 import com.generation.peopleflow.repository.ColaboradorRepository;
 import com.generation.peopleflow.repository.FeriasRepository;
-import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/ferias")
@@ -26,24 +22,17 @@ public class FeriasController {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
 
-    @PostMapping("/agendarferias/{colaboradorId}/")
-    public ResponseEntity<Ferias> agendarFerias(@Valid @RequestBody Ferias ferias){
-        if(colaboradorRepository.existsById(ferias.getColaborador().getId()))
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(feriasRepository.save(ferias));
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O Colaborador não existe!", null);
+    public ResponseEntity<Ferias> agendarFerias(@PathVariable Long colaboradorId, @RequestBody Ferias ferias) {
+        return colaboradorRepository.findById(colaboradorId).map(colaborador -> {
+            ferias.setColaborador(colaborador);
+            ferias.setStatus("AGENDADA");
+            return ResponseEntity.status(HttpStatus.CREATED).body(feriasRepository.save(ferias));
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
     public ResponseEntity<List<Ferias>> getAll() {
         return ResponseEntity.ok(feriasRepository.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Ferias> getById(@PathVariable Long id){
-        return feriasRepository.findById(id)
-                .map(resposta -> ResponseEntity.ok(resposta))
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @GetMapping("/colaborador/{colaboradorId}")
@@ -57,16 +46,6 @@ public class FeriasController {
             ferias.setStatus(feriasDetails.getStatus());
             return ResponseEntity.ok(feriasRepository.save(ferias));
         }).orElse(ResponseEntity.notFound().build());
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        Optional<Ferias> ferias = feriasRepository.findById(id);
-
-        if(ferias.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        feriasRepository.deleteById(id);
     }
 
 
