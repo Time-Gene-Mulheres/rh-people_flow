@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/ferias")
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FeriasController {
 
     @Autowired
