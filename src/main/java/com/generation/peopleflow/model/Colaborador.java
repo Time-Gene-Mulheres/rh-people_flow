@@ -43,17 +43,6 @@ public class Colaborador {
     @JsonIgnoreProperties("colaborador")
     private Usuario usuario;
 
-	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Ferias> ferias;
-
-	public List<Ferias> getFerias() {
-		return ferias;
-	}
-
-	public void setFerias(List<Ferias> ferias) {
-		this.ferias = ferias;
-	}
-
 	public Long getId() {
 		return id;
 	}
