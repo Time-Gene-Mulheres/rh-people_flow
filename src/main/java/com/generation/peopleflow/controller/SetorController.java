@@ -25,6 +25,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/setores")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SetorController {
 	
 	@Autowired

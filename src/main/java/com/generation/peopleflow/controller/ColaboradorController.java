@@ -29,6 +29,8 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/colaboradores")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
+
 public class ColaboradorController {
 	
 	@Autowired
